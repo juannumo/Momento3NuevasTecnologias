@@ -1,0 +1,31 @@
+{% extends "layouts/main.html" %} {% block body %}
+<h3 class="text-center" style="margin-top: 100px">
+  List of Countries with access to Air Quality Information
+</h3>
+<div
+  class="container"
+  style="
+    margin-bottom: 300px;
+    display: inline-flex;
+    overflow: auto;
+  "
+>
+  {% for country in countries %}
+  <div class="card-columns" style="widows: 18rem; margin: 30px">
+    <div
+      class="card justify-content-between ml-3 mt-3 mb-3"
+      style="width: 18rem"
+    >
+      <div class="card-body" style="display: grid">
+        <h5 class="card-title text-center fs-2">{{country['country']}}</h5>
+
+        <a href="/viewStates/{{country['country']}}" class="btn btn-info"
+          >Supported States</a
+        >
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

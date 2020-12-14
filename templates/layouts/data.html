@@ -1,0 +1,68 @@
+{% extends "layouts/main.html" %} {% block body %}
+
+<div class="container">
+  <h1 class="mt-4 fw-bold">{{city}} Data</h1>
+  <h3 class="mt-1">Point coordinates {{coodinates}}</h3>
+  <table class="table mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Datetime</th>
+        <th scope="col">Temperature (Celsius)</th>
+        <th scope="col">Atmospheric pressure (hPa)</th>
+        <th scope="col">Humidity (%)</th>
+        <th scope="col">Wind speed (m/s)</th>
+        <th scope="col">
+          Wind direction, as an angle of 360° (N=0, E=90, S=180, W=270)
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td scope="row">{{Datetime}}</td>
+        <td>{{Temperature}}</td>
+        <td>{{Atmospheric}}</td>
+        <td>{{Humidity}}</td>
+        <td>{{WindS}}</td>
+        <td>{{WindD}}</td>
+      </tr>
+    </tbody>
+    <thead>
+      <tr>
+        <th scope="col">Datetime</th>
+        <th scope="col">AQI-1</th>
+        <th scope="col">MP-1</th>
+        <th scope="col">AQI-2</th>
+        <th scope="col">MP-2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {% for pol in pollution %}
+        <td scope="row">{{pollution[pol]}}</td>
+        {% endfor %}
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container" style="margin-bottom: 200px">
+  <div class="m-5 row">
+    <div class="col card p-3">
+      <h4>UNITS</h4>
+      <h6>AQI-1: Air Quality value based on US EPA standard</h6>
+      <h6>AQI-2: Air Quality value based on China MEP standard</h6>
+      <h6>MP-1: Main pollutant for US Air Quality</h6>
+      <h6>MP-2: Main pollutant for Chinese Air Quality</h6>
+    </div>
+    <div class="col card p-3">
+      <h6>p2: pm2.5 (ugm3)</h6>
+      <h6>p1: pm10 (ugm3)</h6>
+      <h6>o3: Ozone O3 (ppb)</h6>
+      <h6>n2: Nitrogen dioxide NO2 (ppb)</h6>
+      <h6>s2: Sulfur dioxide SO2 (ppb)</h6>
+      <h6>co: Carbon monoxide CO (ppm)</h6>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

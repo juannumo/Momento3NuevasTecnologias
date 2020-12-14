@@ -1,0 +1,34 @@
+{% extends "layouts/main.html" %} {% block body %}
+
+<h3 class="text-center" style="margin-top: 100px">
+  List of Supported Cities for {{state}}
+</h3>
+<div
+  class="container"
+  style="
+    margin-bottom: 300px;
+    display: inline-flex;
+    overflow: auto;
+  "
+>
+  {% for city in cities %}
+  <div class="card-columns" style="widows: 25rem; margin: 30px">
+    <div
+      class="card justify-content-between ml-3 mt-3 mb-3"
+      style="width: 25rem; background-color: lemonchiffon"
+    >
+      <div class="card-body" style="display: grid; align-self: center">
+        <h5 class="card-title text-center fs-1">{{city['city']}}</h5>
+
+        <a
+          href="/data/{{city['city']}}/{{state}}/{{country}}"
+          class="btn btn-secondary"
+          >Select</a
+        >
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}
